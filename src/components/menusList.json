@@ -1,0 +1,50 @@
+[
+  {
+    "path": "/",
+    "icon": true,
+    "name": "home",
+    "label": "首页",
+    "url": "Home/Home",
+    "children": []
+  },
+  {
+    "path": "/mall",
+    "icon": true,
+    "name": "mall",
+    "label": "商品管理",
+    "url": "MallManage/MallManage",
+    "children": []
+  },
+  {
+    "path": "/user",
+    "icon": true,
+    "name": "user",
+    "label": "用户管理",
+    "url": "UserManage/UserManage",
+    "children": []
+  },
+  {
+    "path": "/other",
+    "icon": true,
+    "label": "其他",
+    "name": "other",
+    "children": [
+      {
+        "path": "/page1",
+        "icon": true,
+        "name": "page1",
+        "label": "页面1",
+        "url": "Other/PageOne",
+        "children": []
+      },
+      {
+        "path": "/page2",
+        "icon": true,
+        "name": "page2",
+        "label": "页面2",
+        "url": "Other/PageTwo",
+        "children": []
+      }
+    ]
+  }
+]

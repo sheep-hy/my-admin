@@ -28,4 +28,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 } */
+html,body, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
 </style>
