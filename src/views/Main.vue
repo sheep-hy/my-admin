@@ -1,7 +1,7 @@
 <template>
-  <div class="">
+  <div>
     <el-container>
-      <el-aside width="300px" height="500px">
+      <el-aside width="auto">
         <Aside></Aside>
       </el-aside>
       <el-container>
@@ -21,21 +21,23 @@ import Aside from '@/components/Aside.vue'
 import Header from '@/components/CommonHeader.vue'
 export default {
   name: 'Home',
-  components: {Aside,Header},
+  components: { Aside, Header },
   data() {
     return {}
   },
   computed: {},
-  created() {
-
-  },
+  created() {},
   methods: {},
 }
 </script>
 
 <style lang="less" scoped>
-.el-header{
+.el-header {
   padding: 0;
 }
-
+.el-main {
+  // border: 1px solid red;
+  height: calc(100vh - 60px);
+  overflow: auto;
+}
 </style>

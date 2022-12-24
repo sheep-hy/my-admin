@@ -1,7 +1,11 @@
 <template>
   <div class="header-container">
     <div class="l-content">
-      <el-button icon="el-icon-menu" size="mini"></el-button>
+      <el-button
+        @click="handleMenu"
+        icon="el-icon-menu"
+        size="mini"
+      ></el-button>
       <span class="text">首页</span>
     </div>
     <div class="r-content">
@@ -20,6 +24,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: '',
   components: {},
@@ -28,7 +33,12 @@ export default {
   },
   computed: {},
   created() {},
-  methods: {},
+  methods: {
+    ...mapMutations('tab', ['setIsCollapse']),
+    handleMenu() {
+      this.setIsCollapse()
+    },
+  },
 }
 </script>
 
@@ -45,9 +55,9 @@ export default {
     font-size: 14px;
     margin-left: 10px;
   }
-  .avatar{
+  .avatar {
     height: 40px;
-    height:40px;
+    height: 40px;
     border-radius: 50%;
     background-color: #fff;
   }
