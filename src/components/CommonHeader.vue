@@ -5,8 +5,20 @@
         @click="handleMenu"
         icon="el-icon-menu"
         size="mini"
+        style="margin-right: 20px"
       ></el-button>
-      <span class="text">首页</span>
+      <!-- <span class="text">首页</span> -->
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item
+          v-for="item in tabList"
+          :key="item.path"
+          :to="{ path: item.path }"
+          >{{ item.label }}</el-breadcrumb-item
+        >
+        <!-- <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+        <el-breadcrumb-item>活动详情</el-breadcrumb-item> -->
+      </el-breadcrumb>
     </div>
     <div class="r-content">
       <el-dropdown>
@@ -24,14 +36,16 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
   name: '',
   components: {},
   data() {
     return {}
   },
-  computed: {},
+  computed: {
+    ...mapState('tab', ['tabList']),
+  },
   created() {},
   methods: {
     ...mapMutations('tab', ['setIsCollapse']),
@@ -60,6 +74,23 @@ export default {
     height: 40px;
     border-radius: 50%;
     background-color: #fff;
+  }
+  .l-content {
+    display: flex;
+    align-items: center;
+    /deep/.el-breadcrumb__item {
+      .el-breadcrumb__inner {
+        font-weight: normal;
+        &.is-link {
+          color: #666;
+        }
+      }
+      &:last-child {
+        .el-breadcrumb__inner {
+          color: #fff;
+        }
+      }
+    }
   }
 }
 </style>

@@ -37,7 +37,8 @@ export default {
     if (this.$route.path === '/home') {
       this.active = '/'
     } else {
-      this.active = this.$route.path
+      this.$router.push('/')
+      this.active = '/'
     }
   },
   computed: {
@@ -56,7 +57,7 @@ export default {
 
 <style lang="less" scoped>
 .menu_class {
-  height: 100vh;
+  // height: 100vh;
   .el-menu {
     height: 100vh;
     border-right: none;

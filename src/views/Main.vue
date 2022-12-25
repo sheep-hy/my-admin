@@ -8,6 +8,7 @@
         <el-header>
           <Header></Header>
         </el-header>
+        <Tag></Tag>
         <el-main>
           <router-view></router-view>
         </el-main>
@@ -19,9 +20,10 @@
 <script>
 import Aside from '@/components/Aside.vue'
 import Header from '@/components/CommonHeader.vue'
+import Tag from '@/components/CommonTag.vue'
 export default {
   name: 'Home',
-  components: { Aside, Header },
+  components: { Aside, Header, Tag },
   data() {
     return {}
   },
@@ -37,7 +39,8 @@ export default {
 }
 .el-main {
   // border: 1px solid red;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 125px);
   overflow: auto;
+  // background-color: pink;
 }
 </style>

@@ -26,21 +26,26 @@
   </div>
 </template>
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'Menus', //递归组件的关键，并且要与引入组件的变量名称一致
   data() {
     return {}
   },
   props: ['menuList'],
-  created() {
-  },
+  created() {},
   methods: {
+    ...mapMutations('tab', ['selectMenu']),
     clickMenu(item) {
+      // 当页面的路由与跳转的路由不一致才允许跳转
       if (
         this.$route.path !== item.path &&
         !(this.$route.path === '/home' && item.path === '/')
-      )
+      ) {
         this.$router.push(item.path)
+      }
+      // 更新面包屑数据
+      this.selectMenu(item)
     },
   },
 }

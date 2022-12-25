@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="home">
     <el-row :gutter="20">
       <el-col :span="8">
         <el-card class="box-card">
@@ -50,9 +50,9 @@
             </div>
           </el-card>
         </div>
-        <el-card style="height: 280px">
+        <el-card style="height: 260px">
           <!-- //折线图 -->
-          <div ref="echartsLine" style="height: 280px"></div>
+          <div ref="echartsLine" style="height: 260px"></div>
         </el-card>
         <div class="graph">
           <el-card style="height: 260px">
@@ -206,15 +206,7 @@ export default {
         series: [
           {
             type: 'pie',
-            // radius: '50%',
             data: videoData,
-            // emphasis: {
-            //   itemStyle: {
-            //     shadowBlur: 10,
-            //     shadowOffsetX: 0,
-            //     shadowColor: 'rgba(0, 0, 0, 0.5)',
-            //   },
-            // },
           },
         ],
       }
