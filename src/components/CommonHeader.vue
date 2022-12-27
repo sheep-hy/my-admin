@@ -21,14 +21,14 @@
       </el-breadcrumb>
     </div>
     <div class="r-content">
-      <el-dropdown>
+      <el-dropdown @command="handleCommand">
         <span class="el-dropdown-link">
           <img class="avatar" src="../assets/logo.png" alt="" />
           <!-- 下拉菜单<i class="el-icon-arrow-down el-icon--right"></i> -->
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人中心</el-dropdown-item>
-          <el-dropdown-item>退出</el-dropdown-item>
+          <el-dropdown-item command="layout">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import Cookie from 'js-cookie'
 import { mapMutations, mapState } from 'vuex'
 export default {
   name: '',
@@ -51,6 +52,13 @@ export default {
     ...mapMutations('tab', ['setIsCollapse']),
     handleMenu() {
       this.setIsCollapse()
+    },
+    handleCommand(command) {
+      if (command === 'layout') {
+        Cookie.remove('token')
+
+        this.$router.push('/login')
+      }
     },
   },
 }

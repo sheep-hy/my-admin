@@ -196,7 +196,7 @@ export default {
       })
     },
     cancel() {
-      handleClose()
+      this.handleClose()
     },
     handleClose() {
       this.$refs.form.resetFields()
