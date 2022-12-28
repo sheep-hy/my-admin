@@ -10,7 +10,9 @@
       @close="handleClose"
       :collapse="isCollapse"
     >
-      <h3 :class="{'coll':!isCollapse}">{{ isCollapse ? '后台' : '通用后台管理系统' }}</h3>
+      <h3 :class="{ coll: !isCollapse }">
+        {{ isCollapse ? '后台' : '通用后台管理系统' }}
+      </h3>
       <Menus :menuList="menuList"></Menus>
     </el-menu>
   </div>
@@ -18,7 +20,8 @@
 
 <script>
 import Menus from './Menus.vue'
-import menudata from './menusList.json'
+import Cookie from 'js-cookie'
+// import menudata from './menusList.json'
 import { mapState, mapMutations } from 'vuex'
 export default {
   components: {
@@ -26,23 +29,36 @@ export default {
   },
   data() {
     return {
-      menuList: menudata,
+      // menuList: menudata,
       active: '',
       // isCollapse: false
     }
   },
-  created() {
+  mounted() {
     // console.log(menudata)
-    // console.log(this.$route, '---------')
-    if (this.$route.path === '/home') {
-      this.active = '/'
+    console.log(this.$route, '---------')
+    if (this.$route.name === 'home') {
+      this.active = '/home'
     } else {
-      this.$router.push('/')
-      this.active = '/'
+      this.$router.push('/home')
+      this.active = '/home'
     }
   },
   computed: {
-    ...mapState('tab', ['isCollapse']),
+    ...mapState('tab', ['isCollapse', 'menus']),
+    menuList() {
+      return JSON.parse(Cookie.get('menu')) || [...this.menus]
+    },
+  },
+  watch: {
+    $route: {
+      handler(val) {
+        console.log(val, '路由 ')
+        this.active = val.path
+      },
+    },
+    deep: true,
+    immediate: true,
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -65,11 +81,11 @@ export default {
       text-align: center;
       color: #fff;
       line-height: 48px;
-      font-size:16px;
+      font-size: 16px;
       font-weight: 400;
     }
-    .coll{
-      padding:0 40px;
+    .coll {
+      padding: 0 40px;
     }
   }
 }

@@ -56,6 +56,7 @@ export default {
     handleCommand(command) {
       if (command === 'layout') {
         Cookie.remove('token')
+        Cookie.remove('menu')
 
         this.$router.push('/login')
       }

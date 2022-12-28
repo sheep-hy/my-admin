@@ -34,6 +34,7 @@
 import Mock from 'mockjs'
 import Cookie from 'js-cookie'
 import { getMenu } from '../api/index'
+import { mapMutations } from 'vuex'
 export default {
   name: 'Login',
   components: {},
@@ -52,12 +53,16 @@ export default {
   computed: {},
   created() {},
   methods: {
+    ...mapMutations('tab', ['setMenu', 'addMenu']),
     submit() {
       this.$refs.form.validate(async (valid) => {
         if (valid) {
           const { data } = await getMenu(this.form)
           if (data.code === 20000) {
             Cookie.set('token', data.data.token)
+            // 设置menus
+            this.setMenu(data.data.menu)
+            this.addMenu(this.$router)
             this.$router.push({ name: 'home' })
           } else {
             this.$message.error(data.data.message)

@@ -14,13 +14,14 @@ vue.use(VueRouter)
 const routes = [
   {
     path: "/", component: Main,
+    name: "main",
     redirect: '/home', // 重定向到首页
     children: [
-      { path: "home", name: 'home', component: Home },
-      { path: "user", name: 'user', component: User },
-      { path: "mall", name: 'mall', component: Mall },
-      { path: "page1", name: 'page1', component: PageOne },
-      { path: "page2", name: 'page2', component: PageTwo }
+      // { path: "home", name: 'home', component: Home },
+      // { path: "user", name: 'user', component: User },
+      // { path: "mall", name: 'mall', component: Mall },
+      // { path: "page1", name: 'page1', component: PageOne },
+      // { path: "page2", name: 'page2', component: PageTwo }
     ]
   }, {
     path: "/login",
